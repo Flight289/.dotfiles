@@ -36,7 +36,7 @@ set tabstop=4
 filetype plugin indent on
 syntax on
 set number
-"set relativenumber
+set relativenumber
 set cursorline
 "set ambiwidth=double
 set shellslash
@@ -68,10 +68,10 @@ let g:mapleader = "\<Space>"
 nnoremap ; :
 nnoremap <silent><Leader>w :w<CR>
 nnoremap <silent><Leader>q :q!<CR>
-nnoremap <silent><S-k> 7<up>
-nnoremap <silent><S-j> 7<down>
-nnoremap <silent><S-h> 0
-nnoremap <silent><S-l> $
+noremap <silent><S-k> 7<up>
+noremap <silent><S-j> 7<down>
+noremap <silent><S-h> 0
+noremap <silent><S-l> $
 nnoremap <silent><Esc><Esc> :nohlsearch<CR>
 inoremap <silent><C-f> <right>
 inoremap <silent><C-d> <left>

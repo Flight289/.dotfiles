@@ -5,22 +5,8 @@ repo = 'sainnhe/artify.vim'
 [[plugins]]
 repo = 'jeffreyiacono/vim-colors-wombat'
 hook_add = '''
-autocmd VimEnter * nested colorscheme wombat
+colorscheme wombat
 '''
-
-[[plugins]]
-repo = 'ghifarit53/tokyonight-vim'
-hook_add = '''
-"autocmd VimEnter * nested colorscheme tokyonight
-'''
-
-[[plugins]]
-repo = 'w0ng/vim-hybrid'
-hook_add = '''
-"set background=dark
-"autocmd VimEnter * nested colorscheme hybrid
-'''
-
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -28,21 +14,21 @@ hook_add = '''
 let g:vim_lightline_artify = 2
 
 function! LightlineLSPWarnings() abort
-    let l:counts = lsp#ui#vim#diagnostics#get_buffer_diagnostics_counts()
-    return l:counts.warning == 0 ? '' : printf('\uf071:%d', l:counts.warning)
+    let l:counts = lsp#get_buffer_diagnostics_counts()
+    return l:counts.warning == 0 ? '' : printf("\uf071:%d", l:counts.warning)
 endfunction
 
 
 function! LightlineLSPErrors() abort
-    let l:counts = lsp#ui#vim#diagnostics#get_buffer_diagnostics_counts()
-    return l:counts.error == 0 ? '' : printf('\uf00d:%d', l:counts.error)
+    let l:counts = lsp#get_buffer_diagnostics_counts()
+    return l:counts.error == 0 ? '' : printf("\uf057:%d", l:counts.error)
 endfunction
 
 
 function! LightlineLSPOk() abort
-    let l:counts = lsp#ui#vim#diagnostics#get_buffer_diagnostics_counts()
+    let l:counts = lsp#get_buffer_diagnostics_counts()
     let l:total = l:counts.error + l:counts.warning
-    return l:total == 0 ? '\uf00c' : ''
+    return l:total == 0 ? "\uf058" : ''
 endfunction
 
 
@@ -102,8 +88,6 @@ endfunction
 set laststatus=2
 set noshowmode
 let g:lightline = { 'colorscheme': 'wombat', }
-"let g:lightline = { 'colorscheme': 'tokyonight' }
-"let g:lightline = { 'colorscheme': 'hybrid' }
 let g:lightline.separator = {'left': "\ue0b8", 'right' : "\ue0be"}
 let g:lightline.subseparator = { 'left': "\ue0b9", 'right': "\ue0b9" }
 let g:lightline.tabline_separator = { 'left': "\ue0bc", 'right': "\ue0ba" }
@@ -258,10 +242,10 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
 [[plugins]]
 repo = 'preservim/nerdtree'
 hook_add='''
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <silent><leader>n :NERDTreeFocus<CR>
+nnoremap <silent><C-n> :NERDTree<CR>
+nnoremap <silent><C-t> :NERDTreeToggle<CR>
+nnoremap <silent><C-f> :NERDTreeFind<CR>
 '''
 
 [[plugins]]
@@ -275,11 +259,9 @@ repo = 'Yggdroot/indentLine'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
-on_o = 1
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
-on_i = 1
 hook_add = '''
 let g:lexima_enable_newline_rules = 1
 let s:lexima_rules = [
@@ -304,17 +286,11 @@ repo = 'vim-denops/denops.vim'
 [[plugins]]
 repo = 'kat0h/bufpreview.vim'
 hook_add ='''
-nnoremap <leader>m :PreviewMarkdown<CR>
+nnoremap <silent><leader>m :PreviewMarkdown<CR>
 '''
 
 [[plugins]]
 repo = 'scrooloose/nerdcommenter'
-
-[[plugins]]
-repo = 'lambdalisue/battery.vim'
-hook_add='''
-let g:battery#update_statusline = 1
-'''
 
 [[plugins]]
 repo = 'mechatroner/rainbow_csv'
@@ -337,25 +313,12 @@ repo = 'markonm/traces.vim'
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 
-
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
-repo = 'dense-analysis/ale'
-
-
-[[plugins]]
-repo = 'rhysd/vim-lsp-ale'
-
-[[plugins]]
 repo = 'prabirshrestha/vim-lsp'
-hook_add = '''
-if executable('clangd')
-    au User lsp_setup call lsp#register_server({
-        \ 'name' : 'clangd',
-        \ 'cmd' : {server_info->{'clangd'}},
-        \ 'whitelist': ['c','cpp','objc','objcpp'],
-        \ })
-endif
-'''
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
