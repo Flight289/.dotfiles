@@ -8,3 +8,4 @@ ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/alacritty ~/.config/alacritty
 ln -sf ~/dotfiles/almel ~/.config/almel
 ln -sf ~/dotfiles/almel.yaml ~/.config/almel.yaml
+ln -sf ~/dotfiles/.command ~/.command
