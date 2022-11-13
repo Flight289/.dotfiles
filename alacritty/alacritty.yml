@@ -9,19 +9,19 @@ window:
 
 font:
   normal:
-    family: Hack Nerd Font Mono
+    family: FiraCode Nerd Font Mono
     style: Regular
 
   bold:
-    family: Hack Nerd Font Mono
+    family: FiraCode Nerd Font Mono
     style: Bold
 
   italic:
-    family: Hack Nerd Font Mono
+    family: FiraCode Nerd Font Mono
     style: Italic
 
   bold_italic:
-    familu: Hack Nerd Font Mono
+    familu: FiraCode Nerd Font Mono
     style: Bold Italic
 
   size: 12

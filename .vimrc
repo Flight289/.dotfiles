@@ -34,9 +34,9 @@ set tabstop=4
 " 表示系
 "--------------------------
 filetype plugin indent on
-syntax on
+"syntax on
 set number
-set relativenumber
+"set relativenumber
 set cursorline
 "set ambiwidth=double
 set shellslash
@@ -44,7 +44,7 @@ set showtabline=2
 set showmatch matchtime=1
 set cinoptions+=:0
 set cmdheight=2
-set laststatus=2
+set laststatus=1
 set showcmd
 set display=lastline
 set list
@@ -60,7 +60,6 @@ set termguicolors
 "--------------------------
 " hilights
 "--------------------------
-hi Comment ctermfg=3
 "--------------------------
 " keymaps
 "--------------------------
@@ -71,7 +70,7 @@ nnoremap <silent><Leader>w :w<CR>
 nnoremap <silent><Leader>q :q!<CR>
 noremap <silent><S-k> 7<up>
 noremap <silent><S-j> 7<down>
-noremap <silent><S-h> 0
+noremap <silent><S-h> ^
 noremap <silent><S-l> $
 nnoremap <silent><Esc><Esc> :nohlsearch<CR>
 inoremap <silent><C-f> <right>
@@ -148,7 +147,7 @@ endif
 
 " Required:
 filetype plugin indent on
-syntax enable
+"syntax enable
 
 " If you want to insrall not installed plugins on startup.
 "if dein#check_install()

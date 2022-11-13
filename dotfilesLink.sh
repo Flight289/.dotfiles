@@ -1,4 +1,6 @@
 #!/bin/sh
+ln -sf ~/dotfiles/.wezterm.lua ~/.wezterm.lua
+ln -sf ~/dotfiles/keybinds.lua ~/keybinds.lua
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/dein.toml ~/.vim/dein.toml

@@ -2,10 +2,16 @@
 repo = 'sainnhe/artify.vim'
 
 
+#[[plugins]]
+#repo = 'jeffreyiacono/vim-colors-wombat'
+#hook_add = '''
+#colorscheme wombat
+#'''
+
 [[plugins]]
-repo = 'jeffreyiacono/vim-colors-wombat'
+repo = 'cocopon/iceberg.vim'
 hook_add = '''
-colorscheme wombat
+colorscheme iceberg
 '''
 
 [[plugins]]
@@ -87,7 +93,7 @@ endfunction
 
 set laststatus=2
 set noshowmode
-let g:lightline = { 'colorscheme': 'wombat', }
+let g:lightline = { 'colorscheme': 'iceberg', }
 let g:lightline.separator = {'left': "\ue0b8", 'right' : "\ue0be"}
 let g:lightline.subseparator = { 'left': "\ue0b9", 'right': "\ue0b9" }
 let g:lightline.tabline_separator = { 'left': "\ue0bc", 'right': "\ue0ba" }
@@ -193,37 +199,37 @@ let g:lightline.component_type = {
     \ }
 '''
 
-[[plugins]]
-repo = 'edkolev/tmuxline.vim'
-hook_add='''
-if executable('tmux') && filereadable(expand('~/.bashrc')) && $TMUX !=# ''
-    let g:vimIsInTmux = 1
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set t_Co=256
-else
-    let g:vimIsInTmux = 0
-endif
-if g:vimIsInTmux == 1
-    let g:tmuxline_preset = {
-        \ 'a'    : '#S',
-        \ 'b'    : ['%R',"#{pomodoro_status}"],
-        \ 'c'    : [ '#[fg=blue]\uf6d9#{download_speed}  #[fg=blue]\ufa51#{upload_speed}' ],
-        \ 'win'  : [ '#I', '#W' ],
-        \ 'cwin' : [ '#I', '#W', '#F' ],
-        \ 'x'    : [ " #[fg=green]#{battery_percentage} #{battery_icon} #{battery_remain}" ],
-        \ 'y'    : [ '%Y-%m-%d' ],
-        \ 'z'    : "#{online_status} #(localip)"
-        \ }
-    let g:tmuxline_separators = {
-        \ 'left'        : "\ue0bc",
-        \ 'left_alt'    : "\ue0bd",
-        \ 'right'       : "\ue0ba",
-        \ 'right_alt'   : "\ue0bd",
-        \ 'space'       : ' '
-        \ }
-endif
-'''
+#[[plugins]]
+#repo = 'edkolev/tmuxline.vim'
+#hook_add='''
+#if executable('tmux') && filereadable(expand('~/.bashrc')) && $TMUX !=# ''
+    #let g:vimIsInTmux = 1
+    #let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    #let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    #set t_Co=256
+#else
+    #let g:vimIsInTmux = 0
+#endif
+#if g:vimIsInTmux == 1
+    #let g:tmuxline_preset = {
+        #\ 'a'    : '#S',
+        #\ 'b'    : ['%R',"#{pomodoro_status}"],
+        #\ 'c'    : [ '#[fg=blue]\uf6d9#{download_speed}  #[fg=blue]\ufa51#{upload_speed}' ],
+        #\ 'win'  : [ '#I', '#W' ],
+        #\ 'cwin' : [ '#I', '#W', '#F' ],
+        #\ 'x'    : [ " #[fg=green]#{battery_percentage} #{battery_icon} #{battery_remain}" ],
+        #\ 'y'    : [ '%Y-%m-%d' ],
+        #\ 'z'    : "#{online_status} #(localip)"
+        #\ }
+    #let g:tmuxline_separators = {
+        #\ 'left'        : "\ue0bc",
+        #\ 'left_alt'    : "\ue0bd",
+        #\ 'right'       : "\ue0ba",
+        #\ 'right_alt'   : "\ue0bd",
+        #\ 'space'       : ' '
+        #\ }
+#endif
+#'''
 
 [[plugins]]
 repo = 'itchyny/vim-gitbranch'
@@ -243,9 +249,7 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
 repo = 'preservim/nerdtree'
 hook_add='''
 nnoremap <silent><leader>n :NERDTreeFocus<CR>
-nnoremap <silent><C-n> :NERDTree<CR>
 nnoremap <silent><C-t> :NERDTreeToggle<CR>
-nnoremap <silent><C-f> :NERDTreeFind<CR>
 '''
 
 [[plugins]]
@@ -325,3 +329,5 @@ repo = 'mattn/vim-lsp-settings'
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 
+[[plugins]]
+repo = 'mattn/benchvimrc-vim'

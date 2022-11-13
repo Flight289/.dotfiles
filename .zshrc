@@ -16,7 +16,7 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
 
-HISTFILE=/.zsh_history
+HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVESIZE=1000000
 
@@ -51,8 +51,6 @@ export COMMANDS="/home/flight/.command/"
 export PATH="$COMMANDS:$PATH"
 
 eval "$(almel init zsh)"
-
-eval "(gh completion -s zsh)"
 
 alias vi=vim
 
