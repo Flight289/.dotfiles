@@ -1,4 +1,5 @@
 #!/bin/sh
+ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/dein.toml ~/.vim/dein.toml
 ln -sf ~/dotfiles/dein_lazy.toml ~/.vim/dein_lazy.toml

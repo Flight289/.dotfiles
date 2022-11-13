@@ -67,6 +67,7 @@ hi Comment ctermfg=3
 let g:mapleader = "\<Space>"
 nnoremap ; :
 nnoremap <silent><Leader>w :w<CR>
+"nnoremap <silent><Leader>wq :wq<CR>
 nnoremap <silent><Leader>q :q!<CR>
 noremap <silent><S-k> 7<up>
 noremap <silent><S-j> 7<down>

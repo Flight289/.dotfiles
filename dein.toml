@@ -322,3 +322,6 @@ repo = 'prabirshrestha/vim-lsp'
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
 
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+
