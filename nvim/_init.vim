@@ -1,8 +1,39 @@
+let g:did_install_default_menus = 1
+let g:did_install_syntax_menu   = 1
+let g:did_indent_on             = 1
+"let g:did_load_filetypes        = 1
+let g:did_load_ftplugin         = 1
+let g:loaded_rrhelper           = 1
+let g:loaded_2html_plugin       = 1
+let g:loaded_vimball            = 1
+let g:loaded_vimballPlugin      = 1
+let g:loaded_getscript          = 1
+let g:loaded_getscriptPlugin    = 1
+let g:loaded_gzip               = 1
+let g:loaded_man                = 1
+let g:loaded_matchit            = 1
+let g:loaded_matchparen         = 1
+let g:loaded_netrw              = 1
+let g:loaded_netrwPlugin        = 1
+let g:loaded_nerwSettings       = 1
+let g:loaded_netrwFileHandlers  = 1
+let g:loaded_remote_plugins     = 1
+let g:loaded_shada              = 1
+let g:loaded_shada_plugin       = 1
+let g:loaded_spellfile_plugin   = 1
+let g:loaded_tar                = 1
+let g:loaded_tarPlugin          = 1
+let g:loaded_tutor_mode_plugin  = 1
+let g:loaded_zip                = 1
+let g:loaded_zipPlugin          = 1
+let g:loaded_logiPat            = 1
+let g:skip_loading_mswin        = 1
 "--------------------------
 " 内部処理系
 "--------------------------
 set ttyfast
 set noswapfile
+set nomodeline
 set nowritebackup
 set history=10000
 set nobackup
@@ -14,6 +45,7 @@ set virtualedit=onemore
 set backspace=indent,eol,start
 set wildmenu
 set noerrorbells
+set updatetime=0
 "--------------------------
 " search settings
 "--------------------------
@@ -33,7 +65,7 @@ set tabstop=4
 "--------------------------
 " 表示系
 "--------------------------
-filetype plugin indent on
+"filetype plugin indent on
 "syntax on
 set number
 "set relativenumber
@@ -43,7 +75,7 @@ set shellslash
 set showtabline=2
 set showmatch matchtime=1
 set cinoptions+=:0
-set cmdheight=2
+set cmdheight=1
 set laststatus=1
 set showcmd
 set display=lastline
@@ -60,15 +92,10 @@ set termguicolors
 "--------------------------
 " hilights
 "--------------------------
-colorscheme wombat
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
-highlight LineNr ctermbg=none
-highlight Folded ctermbg=none
-highlight EndOfBuffer ctermbg=none
 "--------------------------
 " keymaps
 "--------------------------
+cabbr w!! w !sudo tee % > /dev/null
 let g:mapleader = "\<Space>"
 nnoremap ; :
 nnoremap <silent><Leader>w :w<CR>
@@ -83,14 +110,24 @@ inoremap <silent><C-f> <right>
 inoremap <silent><C-d> <left>
 nnoremap <silent><C-j> :bprev<CR>
 nnoremap <silent><C-k> :bnext<CR>
+nnoremap <silent><leader>n :NERDTreeFocus<CR>
+nnoremap <silent><C-t> :NERDTreeToggle<CR>
+nnoremap <silent><leader>b :Ddu buffer<CR>
+nnoremap <silent><leader>o :Ddu line<CR>
+nnoremap <silent><leader>r :Ddu register<CR>
+nnoremap <silent><leader>f <Cmd>call ddu#start({'name': 'file_rec'})<CR>
+nnoremap <silent><leader>e <Cmd>call ddu#start({'name': 'filer', 'uiParams': {'filer': {'search': expand('%:p')}}, })<CR>
 
 "--------------------------
 " function
 "--------------------------
 " Undoの永続化
 if has('persistent_undo')
-    let undo_path = expand('~/.vim/undo')
+    let undo_path = expand('~/.config/nvim/undo')
     exe 'set undodir=' .. undo_path
+    if !isdirectory(undo_path)
+        call mkdir(undo_path)
+    endif
     set undofile
 endif
 
@@ -118,7 +155,7 @@ if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
     " .toml file
-    let s:rc_dir = expand('~/.vim')
+    let s:rc_dir = expand('~/.config/nvim')
     if !isdirectory(s:rc_dir)
         call mkdir(s:rc_dir, 'p')
     endif
@@ -157,10 +194,6 @@ endif
 filetype plugin indent on
 "syntax enable
 
-" If you want to insrall not installed plugins on startup.
-"if dein#check_install()
-"    call dein#install()
-"endif
 
 
 "End dein Scripts-----------------------------

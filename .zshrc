@@ -39,6 +39,8 @@ setopt extended_glob
 
 bindkey '^R' history-incremental-pattern-search-backward
 
+#export TERM=xterm-color256
+
 export PATH="/opt:$PATH"
 
 export DENO_INSTALL="/home/flight/.deno"
@@ -53,6 +55,8 @@ export PATH="$COMMANDS:$PATH"
 eval "$(almel init zsh)"
 
 alias vi=vim
+
+alias vim=nvim
 
 alias l='exa --icons'
 

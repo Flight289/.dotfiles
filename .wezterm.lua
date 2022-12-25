@@ -6,7 +6,7 @@ local keybinds = require("keybinds")
 return
 {
     font_size = 12.0,
-    dpi = 94.0,
+    dpi = 96.0,
     max_fps = 100,
     font = wezterm.font('FiraCode Nerd Font Mono'),
     font_antialias = "Greyscale",
@@ -18,16 +18,16 @@ return
     tab_bar_at_bottom = true,
     disable_default_key_bindings = true,
     enable_csi_u_key_encoding = true,
-    color_scheme = "iceberg-dark",
+    color_scheme = "Wombat",
     use_fancy_tab_bar = false,
     tab_max_width = 30,
 
 
-    window_background_opacity = 0.8,
+    window_background_opacity = 0.85,
 
     window_padding =
     {
-        left = 0,
+        left = 2,
         right = 0,
         top = 3,
         bottom = 0,

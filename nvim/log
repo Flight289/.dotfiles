@@ -1,0 +1,222 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.024  000.024: --- NVIM STARTING ---
+000.196  000.172: event init
+000.392  000.196: early init
+000.522  000.130: locale set
+000.593  000.071: init first window
+001.109  000.516: inits 1
+001.127  000.018: window checked
+001.132  000.006: parsing arguments
+001.962  000.134  000.134: require('vim.shared')
+002.155  000.089  000.089: require('vim._meta')
+002.160  000.191  000.102: require('vim._editor')
+002.164  000.382  000.057: require('vim._init_packages')
+002.169  000.654: init lua interpreter
+002.229  000.060: expanding arguments
+002.284  000.055: inits 2
+002.892  000.608: init highlight
+002.896  000.004: waiting for UI
+004.076  001.181: done waiting for UI
+004.100  000.024: clear screen
+004.408  000.308: init default mappings
+004.435  000.027: init default autocommands
+005.293  000.112  000.112: sourcing /usr/share/nvim/runtime/ftplugin.vim
+005.403  000.061  000.061: sourcing /usr/share/nvim/runtime/indent.vim
+007.306  000.297  000.297: sourcing /home/flight/.cache/dein/repos/github.com/Shougo/dein.vim/autoload/dein.vim
+007.495  000.108  000.108: sourcing /home/flight/.cache/dein/repos/github.com/Shougo/dein.vim/autoload/dein/min.vim
+009.997  000.177  000.177: sourcing /usr/share/nvim/runtime/ftoff.vim
+014.660  004.537  004.537: require('impatient')
+015.142  007.223  002.508: sourcing /home/flight/.cache/dein/state_nvim.vim
+015.818  000.417  000.417: sourcing /home/flight/.cache/dein/repos/github.com/Shougo/dein.vim/autoload/dein/autoload.vim
+016.769  000.820  000.820: sourcing /home/flight/.cache/dein/repos/github.com/Shougo/dein.vim/autoload/dein/util.vim
+020.051  000.298  000.298: sourcing /usr/share/nvim/runtime/filetype.lua
+020.175  000.030  000.030: sourcing /usr/share/nvim/runtime/ftplugin.vim
+020.253  000.017  000.017: sourcing /usr/share/nvim/runtime/indent.vim
+020.279  014.794  005.583: sourcing /home/flight/.config/nvim/init.vim
+020.285  000.884: sourcing vimrc file(s)
+020.639  000.201  000.201: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+020.832  000.513  000.311: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+024.653  002.639  002.639: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/asyncrun.vim
+026.010  001.189  001.189: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/lightline/bufferline.vim
+026.073  001.351  000.162: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/bufferline.vim
+026.206  000.085  000.085: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/denops/debug.vim
+026.505  000.152  000.152: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/denops.vim
+026.652  000.414  000.263: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/denops.vim
+026.737  000.043  000.043: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/lightline/asyncrun.vim
+026.948  000.158  000.158: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/lightline.vim
+027.062  000.072  000.072: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/plenary.vim
+027.250  000.154  000.154: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/script_load.vim
+028.121  000.831  000.831: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/surround.vim
+033.373  005.196  005.196: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/webdevicons.vim
+034.135  002.392: loading rtp plugins
+034.411  000.277: loading packages
+035.351  000.809  000.809: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/after/plugin/indentLine.vim
+035.463  000.243: loading after plugins
+035.492  000.029: inits 3
+038.600  003.108: reading ShaDa
+040.150  001.551: opening buffers
+041.078  000.830  000.830: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/lightline.vim
+043.573  000.101  000.101: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/lightline/tab.vim
+044.509  000.247  000.247: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/artify.vim
+045.471  000.376  000.376: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/lightline/colorscheme.vim
+046.820  002.003  001.627: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/lightline/colorscheme/wombat.vim
+054.017  000.450  000.450: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/utils.vim
+054.568  001.324  000.875: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/plugin/lsp.vim
+055.465  000.713  000.713: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/callbag.vim
+055.979  001.255  000.543: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp.vim
+056.302  000.078  000.078: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/diagnostics/state.vim
+057.211  000.022  000.022: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/lightline/asyncrun.vim
+057.967  011.956: BufEnter autocommands
+057.971  000.004: editing files in windows
+058.848  000.009  000.009: sourcing /home/flight/.cache/dein/repos/github.com/vim-denops/denops.vim/plugin/denops/debug.vim
+058.872  000.007  000.007: sourcing /home/flight/.cache/dein/repos/github.com/vim-denops/denops.vim/plugin/denops.vim
+059.494  000.073  000.073: sourcing /home/flight/.cache/dein/repos/github.com/vim-denops/denops.vim/autoload/denops/util.vim
+059.739  000.344  000.270: sourcing /home/flight/.cache/dein/repos/github.com/vim-denops/denops.vim/autoload/denops/server.vim
+060.081  000.076  000.076: sourcing /home/flight/.cache/dein/repos/github.com/vim-denops/denops.vim/autoload/denops/job.vim
+061.951  000.114  000.114: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/ui/vim/signature_help.vim
+062.331  000.138  000.138: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/ui/vim/completion.vim
+062.691  000.117  000.117: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/document_highlight.vim
+063.868  000.038  000.038: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/diagnostics.vim
+066.602  000.046  000.046: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/diagnostics/echo.vim
+067.019  000.167  000.167: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/diagnostics/highlights.vim
+068.433  000.344  000.344: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/lsp.vim
+068.697  000.148  000.148: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/_lsp/VS/Vim/Syntax/Markdown.vim
+068.777  000.025  000.025: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/_lsp.vim
+069.006  000.083  000.083: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/_lsp/VS/LSP/MarkupContent.vim
+069.216  000.066  000.066: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/_lsp/VS/LSP/Text.vim
+069.727  000.329  000.329: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/_lsp/VS/Vim/Window/FloatingWindow.vim
+070.038  000.160  000.160: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/_lsp/VS/Vim/Window.vim
+070.405  000.123  000.123: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/_lsp/VS/Vim/Buffer.vim
+070.532  002.469  001.190: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/diagnostics/float.vim
+070.918  000.166  000.166: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/ui/vim/output.vim
+071.219  000.074  000.074: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/diagnostics/signs.vim
+072.307  000.076  000.076: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/diagnostics/virtual_text.vim
+073.340  000.055  000.055: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/document_code_action/signs.vim
+074.460  000.196  000.196: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/semantic.vim
+074.751  000.032  000.032: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/show_message_request.vim
+075.396  000.044  000.044: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/show_message.vim
+075.927  000.038  000.038: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/work_done_progress.vim
+076.442  000.288  000.288: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/completion/documentation.vim
+077.427  000.068  000.068: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/inlay_hints.vim
+078.263  000.150  000.150: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/client.vim
+080.494  017.812: VimEnter autocommands
+080.501  000.007: UIEnter autocommands
+080.504  000.003: before starting main loop
+084.208  003.704: first screen update
+084.213  000.005: --- NVIM STARTED ---
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.015  000.015: --- NVIM STARTING ---
+000.173  000.158: event init
+000.331  000.158: early init
+000.444  000.113: locale set
+000.515  000.070: init first window
+001.045  000.531: inits 1
+001.063  000.018: window checked
+001.069  000.006: parsing arguments
+001.685  000.098  000.098: require('vim.shared')
+001.874  000.095  000.095: require('vim._meta')
+001.880  000.189  000.093: require('vim._editor')
+001.884  000.330  000.043: require('vim._init_packages')
+001.888  000.489: init lua interpreter
+001.951  000.062: expanding arguments
+002.005  000.054: inits 2
+002.613  000.608: init highlight
+002.617  000.004: waiting for UI
+004.299  001.682: done waiting for UI
+004.322  000.022: clear screen
+004.608  000.286: init default mappings
+004.634  000.026: init default autocommands
+005.482  000.103  000.103: sourcing /usr/share/nvim/runtime/ftplugin.vim
+005.592  000.062  000.062: sourcing /usr/share/nvim/runtime/indent.vim
+007.450  000.297  000.297: sourcing /home/flight/.cache/dein/repos/github.com/Shougo/dein.vim/autoload/dein.vim
+007.645  000.105  000.105: sourcing /home/flight/.cache/dein/repos/github.com/Shougo/dein.vim/autoload/dein/min.vim
+010.050  000.171  000.171: sourcing /usr/share/nvim/runtime/ftoff.vim
+013.732  003.568  003.568: require('impatient')
+014.201  006.144  002.406: sourcing /home/flight/.cache/dein/state_nvim.vim
+014.857  000.418  000.418: sourcing /home/flight/.cache/dein/repos/github.com/Shougo/dein.vim/autoload/dein/autoload.vim
+015.768  000.795  000.795: sourcing /home/flight/.cache/dein/repos/github.com/Shougo/dein.vim/autoload/dein/util.vim
+018.901  000.198  000.198: sourcing /usr/share/nvim/runtime/filetype.lua
+018.983  000.019  000.019: sourcing /usr/share/nvim/runtime/ftplugin.vim
+019.039  000.012  000.012: sourcing /usr/share/nvim/runtime/indent.vim
+019.057  013.383  005.395: sourcing /home/flight/.config/nvim/init.vim
+019.063  000.881: sourcing vimrc file(s)
+019.282  000.134  000.134: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+019.411  000.325  000.191: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+022.995  002.537  002.537: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/asyncrun.vim
+024.077  000.970  000.970: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/lightline/bufferline.vim
+024.126  001.090  000.120: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/bufferline.vim
+024.241  000.078  000.078: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/denops/debug.vim
+024.535  000.151  000.151: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/denops.vim
+024.690  000.417  000.266: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/denops.vim
+024.783  000.033  000.033: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/lightline/asyncrun.vim
+024.929  000.110  000.110: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/lightline.vim
+025.002  000.046  000.046: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/plenary.vim
+025.136  000.108  000.108: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/script_load.vim
+025.756  000.594  000.594: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/surround.vim
+029.829  004.041  004.041: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/plugin/webdevicons.vim
+030.367  001.925: loading rtp plugins
+030.570  000.203: loading packages
+031.237  000.572  000.572: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/after/plugin/indentLine.vim
+031.317  000.175: loading after plugins
+031.338  000.021: inits 3
+034.333  002.995: reading ShaDa
+035.826  001.493: opening buffers
+036.730  000.814  000.814: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/lightline.vim
+039.141  000.096  000.096: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/lightline/tab.vim
+040.038  000.223  000.223: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/artify.vim
+041.002  000.401  000.401: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/lightline/colorscheme.vim
+042.614  002.280  001.879: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/lightline/colorscheme/wombat.vim
+055.204  000.448  000.448: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/utils.vim
+055.747  001.313  000.865: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/plugin/lsp.vim
+056.652  000.719  000.719: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/callbag.vim
+057.166  001.261  000.542: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp.vim
+057.478  000.076  000.076: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/diagnostics/state.vim
+058.344  000.020  000.020: sourcing /home/flight/.cache/dein/.cache/init.vim/.dein/autoload/lightline/asyncrun.vim
+059.083  017.174: BufEnter autocommands
+059.087  000.004: editing files in windows
+059.938  000.008  000.008: sourcing /home/flight/.cache/dein/repos/github.com/vim-denops/denops.vim/plugin/denops/debug.vim
+059.961  000.006  000.006: sourcing /home/flight/.cache/dein/repos/github.com/vim-denops/denops.vim/plugin/denops.vim
+060.567  000.072  000.072: sourcing /home/flight/.cache/dein/repos/github.com/vim-denops/denops.vim/autoload/denops/util.vim
+060.818  000.347  000.276: sourcing /home/flight/.cache/dein/repos/github.com/vim-denops/denops.vim/autoload/denops/server.vim
+061.158  000.062  000.062: sourcing /home/flight/.cache/dein/repos/github.com/vim-denops/denops.vim/autoload/denops/job.vim
+062.849  000.115  000.115: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/ui/vim/signature_help.vim
+063.233  000.135  000.135: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/ui/vim/completion.vim
+063.580  000.114  000.114: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/document_highlight.vim
+064.591  000.023  000.023: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/diagnostics.vim
+067.115  000.041  000.041: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/diagnostics/echo.vim
+067.466  000.123  000.123: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/diagnostics/highlights.vim
+068.763  000.305  000.305: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/lsp.vim
+069.010  000.140  000.140: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/_lsp/VS/Vim/Syntax/Markdown.vim
+069.087  000.024  000.024: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/_lsp.vim
+069.310  000.082  000.082: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/_lsp/VS/LSP/MarkupContent.vim
+069.512  000.065  000.065: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/_lsp/VS/LSP/Text.vim
+070.035  000.350  000.350: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/_lsp/VS/Vim/Window/FloatingWindow.vim
+070.317  000.135  000.135: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/_lsp/VS/Vim/Window.vim
+070.665  000.114  000.114: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/vital/_lsp/VS/Vim/Buffer.vim
+070.792  002.359  001.144: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/diagnostics/float.vim
+071.167  000.165  000.165: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/ui/vim/output.vim
+071.455  000.070  000.070: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/diagnostics/signs.vim
+072.505  000.073  000.073: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/diagnostics/virtual_text.vim
+073.511  000.053  000.053: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/document_code_action/signs.vim
+074.587  000.189  000.189: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/semantic.vim
+074.837  000.028  000.028: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/show_message_request.vim
+075.455  000.040  000.040: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/show_message.vim
+075.952  000.033  000.033: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/work_done_progress.vim
+076.405  000.243  000.243: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/completion/documentation.vim
+077.253  000.054  000.054: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/internal/inlay_hints.vim
+078.023  000.140  000.140: sourcing /home/flight/.cache/dein/repos/github.com/prabirshrestha/vim-lsp/autoload/lsp/client.vim
+080.159  016.650: VimEnter autocommands
+080.164  000.004: UIEnter autocommands
+080.167  000.003: before starting main loop
+083.836  003.669: first screen update
+083.838  000.003: --- NVIM STARTED ---

@@ -12,3 +12,4 @@ ln -sf ~/dotfiles/alacritty ~/.config/alacritty
 ln -sf ~/dotfiles/almel ~/.config/almel
 ln -sf ~/dotfiles/almel.yaml ~/.config/almel.yaml
 ln -sf ~/dotfiles/.command ~/.command
+ln -sf ~/dotfiles/nvim ~/.config/nvim

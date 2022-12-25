@@ -1,23 +1,26 @@
 [[plugins]]
 repo = 'sainnhe/artify.vim'
 
+[[plugins]]
+repo = 'lewis6991/impatient.nvim'
+hook_add = '''
+lua <<EOF
+
+--chunks={
+--enable=true,
+--path=vim.fn.stdpath('cache')..'/luacache_chunks',
+--},
+--modpaths={
+--enable=true,
+--path=vim.fn.stdpath('cache')..'/luacache_modpaths',
+--}
+require('impatient')
+EOF
+'''
+
 
 #[[plugins]]
-#repo = 'jeffreyiacono/vim-colors-wombat'
-#hook_add = '''
-#colorscheme wombat
-#highlight Normal ctermbg=none
-#highlight NonText ctermbg=none
-#highlight LineNr ctermbg=none
-#highlight Folded ctermbg=none
-#highlight EndOfBuffer ctermbg=none
-#'''
-
-#[[plugins]]
-#repo = 'cocopon/iceberg.vim'
-#hook_add = '''
-#colorscheme iceberg
-#'''
+#repo = 'nathom/filetype.nvim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -118,7 +121,7 @@ if g:vim_lightline_artify == 0
         \ 'right':[ [ 'lineinfo' ] ]
         \ }
     let g:lightline.tabline = {
-        \ 'left': [ [ 'vim_logo', 'tabs' ] ],
+        \ 'left': [ [ 'vim_logo', 'buffers' ] ],
         \ 'right': [ [ 'git_global' ],
         \            [ 'git_buffer' ] ]
         \ }
@@ -139,7 +142,7 @@ else
         \ 'right': [ [ 'artify_lineinfo' ] ]
         \ }
     let g:lightline.tabline = {
-        \ 'left': [ [ 'vim_logo', 'tabs' ] ],
+        \ 'left': [ [ 'vim_logo', 'buffers' ] ],
         \ 'right': [ [ 'git_global' ],
         \            [ 'git_buffer' ] ]
         \ }
@@ -149,7 +152,7 @@ else
         \ }
 endif
 let g:lightline.tab_component_function = {
-    \ 'artify_activetabnum': 'ArtifyActiveTabNum',
+    \ 'artify_activetabnum': 'ArtifyciveTabNum',
     \ 'artify_inactivetabnum': 'ArtifyInactiveTabNum',
     \ 'artify_filename': 'ArtifyLightlineTabFilename',
     \ 'tabnum': 'TabNum',
@@ -193,6 +196,7 @@ let g:lightline.component_expand = {
     \ 'lsp_warnings': 'LightlineLSPWarnings',
     \ 'lsp_errors': 'LightlineLSPErrors',
     \ 'lsp_ok': 'LightlineLSPOk',
+    \ 'buffers': 'lightline#bufferline#buffers',
     \ 'tabs': 'lightline#tabs',
     \ 'asyncrun_status': 'lightline#asyncrun#status'
     \ }
@@ -200,47 +204,19 @@ let g:lightline.component_type = {
     \ 'lsp_warnings': 'warning',
     \ 'lsp_errors': 'error',
     \ 'lsp_ok': 'middle',
+    \ 'buffers': 'tabsel',
     \ 'tabs': 'tabsel'
     \ }
 '''
-
-#[[plugins]]
-#repo = 'edkolev/tmuxline.vim'
-#hook_add='''
-#if executable('tmux') && filereadable(expand('~/.bashrc')) && $TMUX !=# ''
-    #let g:vimIsInTmux = 1
-    #let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    #let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    #set t_Co=256
-#else
-    #let g:vimIsInTmux = 0
-#endif
-#if g:vimIsInTmux == 1
-    #let g:tmuxline_preset = {
-        #\ 'a'    : '#S',
-        #\ 'b'    : ['%R',"#{pomodoro_status}"],
-        #\ 'c'    : [ '#[fg=blue]\uf6d9#{download_speed}  #[fg=blue]\ufa51#{upload_speed}' ],
-        #\ 'win'  : [ '#I', '#W' ],
-        #\ 'cwin' : [ '#I', '#W', '#F' ],
-        #\ 'x'    : [ " #[fg=green]#{battery_percentage} #{battery_icon} #{battery_remain}" ],
-        #\ 'y'    : [ '%Y-%m-%d' ],
-        #\ 'z'    : "#{online_status} #(localip)"
-        #\ }
-    #let g:tmuxline_separators = {
-        #\ 'left'        : "\ue0bc",
-        #\ 'left_alt'    : "\ue0bd",
-        #\ 'right'       : "\ue0ba",
-        #\ 'right_alt'   : "\ue0bd",
-        #\ 'space'       : ' '
-        #\ }
-#endif
-#'''
 
 [[plugins]]
 repo = 'itchyny/vim-gitbranch'
 
 [[plugins]]
 repo = 'macthecadillac/lightline-gitdiff'
+
+[[plugins]]
+repo = 'mengelbrecht/lightline-bufferline'
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
@@ -251,79 +227,33 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
 '''
 
 [[plugins]]
-repo = 'preservim/nerdtree'
-hook_add='''
-nnoremap <silent><leader>n :NERDTreeFocus<CR>
-nnoremap <silent><C-t> :NERDTreeToggle<CR>
-'''
-
-[[plugins]]
-repo = 'junegunn/vim-peekaboo'
-hook_add = '''
-let g:peekaboo_delay = 0
-'''
-
-[[plugins]]
 repo = 'Yggdroot/indentLine'
+hook_add = '''
+let g:indentLine_color_gui = '#aaaaaa'
+let g:indentLine_bgcolor_gui = '#242424'
+"let g:indentLine_char = '|'
+'''
 
 [[plugins]]
 repo = 'tpope/vim-surround'
 
-#[[plugins]]
-#repo = 'cohama/lexima.vim'
-#hook_add = '''
-#let g:lexima_enable_newline_rules = 1
-#let s:lexima_rules = [
-#\ {'char': '$', 'input_after': '$', 'filetype': 'latex'},
-#\ {'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': 'latex'},
-#\ {'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': 'latex'},
-#\ {'char': ';', 'at': '(,*\%#)$', 'input': '<Right>;'},
-#\ {'char': ';', 'at': '^\s*\%#)$', 'input': '<Right>;'},
-#\ {'char': ';', 'at': '(,*\%#\}$', 'input': '<Right>;'},
-#\ {'char': ';', 'at': '^\s*\%#\}$', 'input': '<Right>;'},
-#\ ]
-
-#for s:lexima_rule in s:lexima_rules
-    #call lexima#add_rule(s:lexima_rule)
-#endfor
-#'''
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 
 
 [[plugins]]
-repo = 'kat0h/bufpreview.vim'
-hook_add ='''
-nnoremap <silent><leader>m :PreviewMarkdown<CR>
-'''
-
-[[plugins]]
-repo = 'scrooloose/nerdcommenter'
-
-[[plugins]]
-repo = 'mechatroner/rainbow_csv'
-
-[[plugins]]
-repo = 'alvan/vim-closetag'
-hook_add = '''
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.erb,*.php,*.vue'
-'''
-
-[[plugins]]
 repo = 'skywind3000/asyncrun.vim'
 
 [[plugins]]
 repo = 'albertomontesg/lightline-asyncrun'
-
-[[plugins]]
-repo = 'markonm/traces.vim'
-
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
+depend = ['asyncrun.vim','lightline.vim']
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
@@ -339,10 +269,184 @@ nnoremap <silent><leader>lr :LspRename<CR>
 '''
 
 [[plugins]]
-repo = 'easymotion/vim-easymotion'
+repo = 'scrooloose/nerdcommenter'
+
+[[plugins]]  
+repo = 'nvim-lua/plenary.nvim'
 
 [[plugins]]
-repo = 'mattn/benchvimrc-vim'
+repo = 'nvim-telescope/telescope.nvim'
+#[[plugins]]
+#repo = 'Shougo/ddu.vim'
+#depend = 'denops.vim'
+#hook_add = '''
+#let float_width = 0.85
+#let float_height = 0.7
+#call ddu#custom#patch_global({
+#\   'ui': 'ff',
+#\   'uiParams': {
+#\       'ff': {
+#\           'split': 'floating',
+#\           'startFilter': v:true,
+#\           'prompt': '> ',
+#\           'winWidth': float2nr(&columns * float_width),
+#\           'winCol': float2nr((&columns - (&columns * float_width)) / 2),
+#\           'winHeight': float2nr(&lines * float_height),
+#\           'winRow': float2nr((&lines - (&lines * float_height)) / 2),
+#\       },
+#\   },
+#\   'sources': [
+#\       {'name':'file'},
+#\       {'name':'line'},
+#\       {'name':'buffer'},
+#\       {'name':'register'},
+#\   ],
+#\   'sourceOptions': {
+#\       '_': {
+#\           'matchers': ['matcher_substring'],
+#\           'ignoreCase': v:true,
+#\           'sorters': [
+#\               'sorter_alpha',
+#\           ]
+#\       },
+#\   },
+#\   'filterParams': {
+#\       'matcher_substring': {
+#\           'defaultAction': 'open',
+#\       },
+#\   },
+#\   'kindOptions': {
+#\       'file': {
+#\           'defaultAction': 'open',
+#\       },
+#\       'word': {
+#\           'defaultAction': 'append',
+#\       },
+#\   },
+#\})
 
-[[plugins]]
-repo = 'turbio/bracey.vim'
+#call ddu#custom#patch_local('file_rec', {
+#\   'sources': [{
+#\       'name':'file_rec',
+#\       'params': {
+#\           'ignoredDirectories': ['.git', 'var', 'node_modules',]
+#\       },
+#\   }],
+#\})
+
+#call ddu#custom#patch_local('filer', {
+#\   'ui': 'filer',
+#\   'uiParams': {
+#\       'filer': {
+#\           'split': 'vertical',
+#\           'splitDirection': 'topleft',
+#\           'winWidth': 30,
+#\       },
+#\   },
+#\   'sources': [
+#\       {'name': 'file', 'params': {}},
+#\   ],
+#\   'sourceOptions': {
+#\       '_': {
+#\           'columns': ['filename'],
+#\       },
+#\   },
+#\   'columns': ['filename'],
+#\   'kindOptions': {
+#\       'file': {
+#\           'defaultAction': 'open',
+#\       },
+#\   },
+#\   'actionOptions': {
+#\       'narrow': {
+#\           'quit': v:true,
+#\       },
+#\   },
+#\})
+
+#autocmd FileType ddu-ff call s:ddu_ff_settings()
+#function! s:ddu_ff_settings() abort
+    #nnoremap <buffer><silent> <CR> <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
+    #nnoremap <buffer><silent> s <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
+    #nnoremap <buffer><silent> i <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
+    #nnoremap <buffer><silent> q <Cmd>call ddu#ui#ff#do_action('quit')<CR>
+#endfunction
+
+#autocmd FileType ddu-ff-filter call s:ddu_filter_my_settings()
+#function! s:ddu_filter_my_settings() abort
+    #nnoremap <butter><silent> <CR> :q<CR>
+    #nnoremap <butter><silent> <ESC> :q<CR>
+    #nnoremap <butter><silent> q :q<CR>
+    #inoremap <butter><silent> <CR> <ESC>:q<CR>
+#endfunction
+
+#autocmd FileType ddu-filer call s:ddu_filer_my_settings()
+#function! s:ddu_filer_my_settings() abort
+    #nnoremap <buffer><silent><expr> <CR>
+    #\   ddu#ui#filer#is_tree() ?
+    #\       "<Cmd>call ddu#ui#filer#do_action('expandItem', {'mode': 'toggle'})<CR>" :
+    #\       "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open'})<CR>"
+    #nnoremap <buffer><silent> o <Cmd>call ddu#ui#filer#do_action('expandItem', {'mode':  'toggle'})<CR>
+    #nnoremap <buffer><silent> <leader>e <Cmd>call ddu#ui#filer#do_action('quit')<CR>
+    #nnoremap <buffer><silent> c <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'copy'})<CR>
+    #nnoremap <buffer><silent> p <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'paste'})<CR>
+    #nnoremap <buffer><silent> d <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'delete'})<CR>
+    #nnoremap <buffer><silent> r <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'rename'})<CR>
+    #nnoremap <buffer><silent> mv <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'move'})<CR>
+    #nnoremap <buffer><silent> t <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'newFile'})<CR>
+    #nnoremap <buffer><silent> mk <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'newDirectory'})<CR>
+    #nnoremap <buffer><silent> yy <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'yank'})<CR>
+#endfunction
+#'''
+
+#[[plugins]]
+#repo = 'Shougo/ddu-ui-ff'
+#depend = 'ddu.vim'
+
+#[[plugins]]
+#repo = 'Shougo/ddu-ui-filer'
+#depend = 'ddu.vim'
+
+#[[plugins]]
+#repo = 'Shougo/ddu-source-file'
+#depend = 'ddu.vim'
+
+#[[plugins]]
+#repo = 'Shougo/ddu-source-file_rec'
+#depend = 'ddu.vim'
+
+#[[plugins]]
+#repo = 'Shougo/ddu-source-buffer'
+#depend = 'ddu.vim'
+
+#[[plugins]]
+#repo = 'Shougo/ddu-source-line'
+#depend = 'ddu.vim'
+
+#[[plugins]]
+#repo = 'Shougo/ddu-source-register'
+#depend = 'ddu.vim'
+
+#[[plugins]]
+#repo = 'Shougo/ddu-filter-sorter_alpha'
+#depend = 'ddu.vim'
+
+#[[plugins]]
+#repo = 'Shougo/ddu-filter-matcher_substring'
+#depend = 'ddu.vim'
+
+#[[plugins]]
+#repo = 'Shougo/ddu-kind-file'
+#depend = 'ddu.vim'
+
+#[[plugins]]
+#repo = 'Shougo/ddu-kind-word'
+#depend = 'ddu.vim'
+
+#[[plugins]]
+#repo = 'Shougo/ddu-column-filename'
+#depend = 'ddu.vim'
+
+#[[plugins]]
+#repo = 'Shougo/ddu-commands.vim'
+#depend = 'ddu.vim'

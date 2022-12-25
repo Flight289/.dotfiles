@@ -5,10 +5,10 @@ local act = wezterm.action
 M.keybinds =
 {
 -- tmux_keybinds
-    { key = "k", mods = "ALT", action = act({ SpawnTab = "CurrentPaneDomain" }) },
-    { key = "j", mods = "ALT", action = act({ CloseCurrentTab = { confirm = true } }) },
-    { key = "h", mods = "ALT", action = act({ ActivateTabRelative = -1 }) },
-    { key = "l", mods = "ALT", action = act({ ActivateTabRelative = 1 }) },
+    { key = "k", mods = "ALT|SHIFT", action = act({ SpawnTab = "CurrentPaneDomain" }) },
+    { key = "j", mods = "ALT|SHIFT", action = act({ CloseCurrentTab = { confirm = true } }) },
+    { key = "h", mods = "ALT|SHIFT", action = act({ ActivateTabRelative = -1 }) },
+    { key = "l", mods = "ALT|SHIFT", action = act({ ActivateTabRelative = 1 }) },
     { key = "h", mods = "ALT|CTRL", action = act({ MoveTabRelative = -1 }) },
     { key = "l", mods = "ALT|CTRL", action = act({ MoveTabRelative = 1 }) },
     {
@@ -28,10 +28,10 @@ M.keybinds =
     { key = "9", mods = "ALT", action = act({ ActivateTab = 8 }) },
     { key = "-", mods = "ALT", action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
     { key = "¥", mods = "ALT", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
-    { key = "h", mods = "ALT|SHIFT", action = act({ ActivatePaneDirection = "Left" }) },
-    { key = "l", mods = "ALT|SHIFT", action = act({ ActivatePaneDirection = "Right" }) },
-    { key = "j", mods = "ALT|SHIFT", action = act({ ActivatePaneDirection = "Down" }) },
-    { key = "k", mods = "ALT|SHIFT", action = act({ ActivatePaneDirection = "Up" }) },
+    { key = "h", mods = "ALT", action = act({ ActivatePaneDirection = "Left" }) },
+    { key = "l", mods = "ALT", action = act({ ActivatePaneDirection = "Right" }) },
+    { key = "j", mods = "ALT", action = act({ ActivatePaneDirection = "Down" }) },
+    { key = "k", mods = "ALT", action = act({ ActivatePaneDirection = "Up" }) },
     { key = "h", mods = "ALT|SHIFT|CTRL", action = act({ AdjustPaneSize = { "Left", 1 } }) },
     { key = "l", mods = "ALT|SHIFT|CTRL", action = act({ AdjustPaneSize = { "Right", 1 } }) },
     { key = "j", mods = "ALT|SHIFT|CTRL", action = act({ AdjustPaneSize = { "Down", 1 } }) },
@@ -43,9 +43,9 @@ M.keybinds =
     { key = "c", mods = "CTRL|SHIFT", action = act({ CopyTo = "Clipboard" }) },
     { key = "v", mods = "CTRL|SHIFT", action = act({ PasteFrom = "Clipboard" }) },
     { key = "Insert", mods = "SHIFT", action = act({ PasteFrom = "PrimarySelection" }) },
-    { key = "-", mods = "CTRL|SHIFT", action = "ResetFontSize" },
-    { key = "-", mods = "CTRL", action = "DecreaseFontSize" },
-    { key = ";", mods = "CTRL|SHIFT", action = "IncreaseFontSize" },
+    --{ key = "-", mods = "CTRL|SHIFT", action = "ResetFontSize" },
+    --{ key = "-", mods = "CTRL", action = "DecreaseFontSize" },
+    --{ key = ";", mods = "CTRL|SHIFT", action = "IncreaseFontSize" },
     { key = "k", mods = "CTRL|SHIFT", action = act({ ScrollByPage = 1 }) },
     { key = "j", mods = "CTRL|SHIFT", action = act({ ScrollByPage = -1 }) },
     { key = "z", mods = "ALT", action = "ReloadConfiguration"  },
@@ -206,8 +206,8 @@ M.key_tables =
             }),
         },
         -- scroll
-        { key = "b", mods = "CTRL", action = act.CopyMode("PageUp") },
-        { key = "f", mods = "CTRL", action = act.CopyMode("PageDown") },
+        --{ key = "b", mods = "CTRL", action = act.CopyMode("PageUp") },
+        --{ key = "f", mods = "CTRL", action = act.CopyMode("PageDown") },
         {
             key = "Enter",
             mods = "NONE",

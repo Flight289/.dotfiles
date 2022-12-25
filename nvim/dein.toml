@@ -1,23 +1,15 @@
 [[plugins]]
 repo = 'sainnhe/artify.vim'
 
+[[plugins]]
+repo = 'lewis6991/impatient.nvim'
+hook_add = '''
+lua require('impatient')
+'''
+
 
 #[[plugins]]
-#repo = 'jeffreyiacono/vim-colors-wombat'
-#hook_add = '''
-#colorscheme wombat
-#highlight Normal ctermbg=none
-#highlight NonText ctermbg=none
-#highlight LineNr ctermbg=none
-#highlight Folded ctermbg=none
-#highlight EndOfBuffer ctermbg=none
-#'''
-
-#[[plugins]]
-#repo = 'cocopon/iceberg.vim'
-#hook_add = '''
-#colorscheme iceberg
-#'''
+#repo = 'nathom/filetype.nvim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -118,7 +110,7 @@ if g:vim_lightline_artify == 0
         \ 'right':[ [ 'lineinfo' ] ]
         \ }
     let g:lightline.tabline = {
-        \ 'left': [ [ 'vim_logo', 'tabs' ] ],
+        \ 'left': [ [ 'vim_logo', 'buffers' ] ],
         \ 'right': [ [ 'git_global' ],
         \            [ 'git_buffer' ] ]
         \ }
@@ -139,7 +131,7 @@ else
         \ 'right': [ [ 'artify_lineinfo' ] ]
         \ }
     let g:lightline.tabline = {
-        \ 'left': [ [ 'vim_logo', 'tabs' ] ],
+        \ 'left': [ [ 'vim_logo', 'buffers' ] ],
         \ 'right': [ [ 'git_global' ],
         \            [ 'git_buffer' ] ]
         \ }
@@ -149,7 +141,7 @@ else
         \ }
 endif
 let g:lightline.tab_component_function = {
-    \ 'artify_activetabnum': 'ArtifyActiveTabNum',
+    \ 'artify_activetabnum': 'ArtifyciveTabNum',
     \ 'artify_inactivetabnum': 'ArtifyInactiveTabNum',
     \ 'artify_filename': 'ArtifyLightlineTabFilename',
     \ 'tabnum': 'TabNum',
@@ -193,6 +185,7 @@ let g:lightline.component_expand = {
     \ 'lsp_warnings': 'LightlineLSPWarnings',
     \ 'lsp_errors': 'LightlineLSPErrors',
     \ 'lsp_ok': 'LightlineLSPOk',
+    \ 'buffers': 'lightline#bufferline#buffers',
     \ 'tabs': 'lightline#tabs',
     \ 'asyncrun_status': 'lightline#asyncrun#status'
     \ }
@@ -200,47 +193,13 @@ let g:lightline.component_type = {
     \ 'lsp_warnings': 'warning',
     \ 'lsp_errors': 'error',
     \ 'lsp_ok': 'middle',
+    \ 'buffers': 'tabsel',
     \ 'tabs': 'tabsel'
     \ }
 '''
 
-#[[plugins]]
-#repo = 'edkolev/tmuxline.vim'
-#hook_add='''
-#if executable('tmux') && filereadable(expand('~/.bashrc')) && $TMUX !=# ''
-    #let g:vimIsInTmux = 1
-    #let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    #let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    #set t_Co=256
-#else
-    #let g:vimIsInTmux = 0
-#endif
-#if g:vimIsInTmux == 1
-    #let g:tmuxline_preset = {
-        #\ 'a'    : '#S',
-        #\ 'b'    : ['%R',"#{pomodoro_status}"],
-        #\ 'c'    : [ '#[fg=blue]\uf6d9#{download_speed}  #[fg=blue]\ufa51#{upload_speed}' ],
-        #\ 'win'  : [ '#I', '#W' ],
-        #\ 'cwin' : [ '#I', '#W', '#F' ],
-        #\ 'x'    : [ " #[fg=green]#{battery_percentage} #{battery_icon} #{battery_remain}" ],
-        #\ 'y'    : [ '%Y-%m-%d' ],
-        #\ 'z'    : "#{online_status} #(localip)"
-        #\ }
-    #let g:tmuxline_separators = {
-        #\ 'left'        : "\ue0bc",
-        #\ 'left_alt'    : "\ue0bd",
-        #\ 'right'       : "\ue0ba",
-        #\ 'right_alt'   : "\ue0bd",
-        #\ 'space'       : ' '
-        #\ }
-#endif
-#'''
-
 [[plugins]]
-repo = 'itchyny/vim-gitbranch'
-
-[[plugins]]
-repo = 'macthecadillac/lightline-gitdiff'
+repo = 'mengelbrecht/lightline-bufferline'
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
@@ -251,98 +210,23 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
 '''
 
 [[plugins]]
-repo = 'preservim/nerdtree'
-hook_add='''
-nnoremap <silent><leader>n :NERDTreeFocus<CR>
-nnoremap <silent><C-t> :NERDTreeToggle<CR>
-'''
-
-[[plugins]]
-repo = 'junegunn/vim-peekaboo'
-hook_add = '''
-let g:peekaboo_delay = 0
-'''
-
-[[plugins]]
 repo = 'Yggdroot/indentLine'
-
-[[plugins]]
-repo = 'tpope/vim-surround'
-
-#[[plugins]]
-#repo = 'cohama/lexima.vim'
-#hook_add = '''
-#let g:lexima_enable_newline_rules = 1
-#let s:lexima_rules = [
-#\ {'char': '$', 'input_after': '$', 'filetype': 'latex'},
-#\ {'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': 'latex'},
-#\ {'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': 'latex'},
-#\ {'char': ';', 'at': '(,*\%#)$', 'input': '<Right>;'},
-#\ {'char': ';', 'at': '^\s*\%#)$', 'input': '<Right>;'},
-#\ {'char': ';', 'at': '(,*\%#\}$', 'input': '<Right>;'},
-#\ {'char': ';', 'at': '^\s*\%#\}$', 'input': '<Right>;'},
-#\ ]
-
-#for s:lexima_rule in s:lexima_rules
-    #call lexima#add_rule(s:lexima_rule)
-#endfor
-#'''
-
-[[plugins]]
-repo = 'vim-denops/denops.vim'
-
-
-[[plugins]]
-repo = 'kat0h/bufpreview.vim'
-hook_add ='''
-nnoremap <silent><leader>m :PreviewMarkdown<CR>
-'''
-
-[[plugins]]
-repo = 'scrooloose/nerdcommenter'
-
-[[plugins]]
-repo = 'mechatroner/rainbow_csv'
-
-[[plugins]]
-repo = 'alvan/vim-closetag'
 hook_add = '''
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.erb,*.php,*.vue'
+let g:indentLine_color_gui = '#aaaaaa'
+let g:indentLine_bgcolor_gui = '#242424'
+"let g:indentLine_char = '|'
 '''
+
+
 
 [[plugins]]
 repo = 'skywind3000/asyncrun.vim'
 
 [[plugins]]
 repo = 'albertomontesg/lightline-asyncrun'
+depend = ['asyncrun.vim','lightline.vim']
 
-[[plugins]]
-repo = 'markonm/traces.vim'
 
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
+[[plugins]]  
+repo = 'nvim-lua/plenary.nvim'
 
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-
-[[plugins]]
-repo = 'mattn/vim-lsp-settings'
-hook_add = '''
-nnoremap <silent><leader>ld :LspDefinition<CR>
-nnoremap <silent><leader>lh :LspHover<CR>
-nnoremap <silent><leader>le :LspNextError<CR>
-nnoremap <silent><leader>lE :LspPreviousError<CR>
-nnoremap <silent><leader>lr :LspRename<CR>
-'''
-
-[[plugins]]
-repo = 'easymotion/vim-easymotion'
-
-[[plugins]]
-repo = 'mattn/benchvimrc-vim'
-
-[[plugins]]
-repo = 'turbio/bracey.vim'

@@ -1,0 +1,206 @@
+#[plugins]]
+#repo = 'edkolev/tmuxline.vim'
+#hook_add='''
+#if executable('tmux') && filereadable(expand('~/.bashrc')) && $TMUX != ''
+    #let g:vimIsInTmux = 1
+    #let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    #let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    #set t_Co=256
+#else
+    #let g:vimIsInTmux = 0
+#endif
+#if g:vimIsInTmux == 1
+    #let g:tmuxline_preset = {
+        #\ 'a'    : '#S',
+        #\ 'b'    : ['%R',"#{pomodoro_status}"],
+        #\ 'c'    : [ '#[fg=blue]\uf6d9#{download_speed}  #[fg=blue]\ufa51#{upload_speed}' ],
+        #\ 'win'  : [ '#I', '#W' ],
+        #\ 'cwin' : [ '#I', '#W', '#F' ],
+        #\ 'x'    : [ " #[fg=green]#{battery_percentage} #{battery_icon} #{battery_remain}" ],
+        #\ 'y'    : [ '%Y-%m-%d' ],
+        #\ 'z'    : "#{online_status} #(localip)"
+        #\ }
+    #let g:tmuxline_separators = {
+        #\ 'left'        : "\ue0bc",
+        #\ 'left_alt'    : "\ue0bd",
+        #\ 'right'       : "\ue0ba",
+        #\ 'right_alt'   : "\ue0bd",
+        #\ 'space'       : ' '
+        #\ }
+#endif
+#'''
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_event = ['InsertEnter']
+hook_source = '''
+let g:lexima_enable_newline_rules = 1
+let s:lexima_rules = [
+\ {'char': '$', 'input_after': '$', 'filetype': 'latex'},
+\ {'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': 'latex'},
+\ {'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': 'latex'},
+\ {'char': ';', 'at': '(,*\%#)$', 'input': '<Right>;'},
+\ {'char': ';', 'at': '^\s*\%#)$', 'input': '<Right>;'},
+\ {'char': ';', 'at': '(,*\%#\}$', 'input': '<Right>;'},
+\ {'char': ';', 'at': '^\s*\%#\}$', 'input': '<Right>;'},
+\ ]
+
+for s:lexima_rule in s:lexima_rules
+    call lexima#add_rule(s:lexima_rule)
+endfor
+'''
+
+[[plugins]]
+repo = 'junegunn/vim-peekaboo'
+
+[[plugins]]
+repo = 'mechatroner/rainbow_csv'
+on_ft = ['csv']
+
+[[plugins]]
+repo = 'alvan/vim-closetag'
+on_ft = ['html', 'xhtml', 'xml', 'phtml', 'eruby', 'php', 'javascript']
+on_event = ['InsertEnter']
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+on_event = 'CursorMoved'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+on_event = 'CursorMoved'
+
+[[plugins]]
+repo = 'scrooloose/nerdcommenter'
+on_event = 'CursorMoved'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'turbio/bracey.vim'
+on_ft = ['html']
+hook_source = '''
+g:bracey_browser_command = 'xdg-open'
+'''
+
+[[plugins]]
+repo = 'preservim/nerdtree'
+on_cmd = [':NERDTreeFocus', ':NERDTreeToggle']
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+on_event = ['InsertEnter']
+depends = ['ddc-source-around','ddc-matcher_head','ddc-sorter_rank','ddc-source-nextword','ddc-vim-lsp','ddc-ui-native','denops.vim']
+hook_source = '''
+call ddc#custom#patch_global('ui', 'native')
+call ddc#custom#patch_global('sources', ['around'])
+call ddc#custom#patch_global('sourceOptions', {
+            \ 'around': { 'mark': 'A' },
+            \ 'nextword': {'mark': 'nextword'},
+            \ 'vim-lsp': { 'mark': 'lsp' },
+            \ '_': {
+            \ 'matchers': ['matcher_head'],
+            \ 'sorters': ['sorter_rank']},
+            \ })
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? '<C-n>' :
+            \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+            \ '<TAB>' : ddc#map#manual_complete()
+call ddc#enable()
+'''
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-native'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-around'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-nextword'
+
+[[plugins]]
+repo = 'shun/ddc-vim-lsp'
+
+[[plugins]]
+repo = 'kat0h/bufpreview.vim'
+depends = 'denops.vim'
+on_ft = ['markdown']
+hook_source ='''
+nnoremap <silent><leader>m :PreviewMarkdown<CR>
+'''
+
+[[plugins]]
+repo = 'gko/vim-coloresque'
+on_ft = ['css','html','less','sass','scss','stylus']
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_source ='''
+let g:lsp_diagnostics_enabled = 0
+'''
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+depends = 'vim-lsp'
+on_event = 'CursorMoved'
+hook_source = '''
+nnoremap <silent><leader>ld :LspDefinition<CR>
+nnoremap <silent><leader>lh :LspHover<CR>
+nnoremap <silent><leader>le :LspNextError<CR>
+nnoremap <silent><leader>lE :LspPreviousError<CR>
+nnoremap <silent><leader>lr :LspRename<CR>
+'''
+
+[[plugins]]
+repo = 'folke/tokyonight.nvim'
+on_event = ['CursorHold']
+hook_source = '''
+colorscheme tokyonight-storm
+hi SpecialKey ctermfg=256
+'''
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+on_event = ['CursorHold']
+hook_source = '''
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = true,
+  },
+}
+EOF
+'''
+
+[[plugins]]
+repo = 'nvim-telescope/telescope.nvim'
+on_event = ['CursorHold']
+#on_event = ['<cmd>lua require("telescope.builtin").find_files( { cwd = vim.fn.expand("%:p:h") } )','<cmd>lua require("telescope.builtin").live_grep( { cwd = vim.fn.expand("%:p:h") } )','<cmd>lua require("telescope.builtin").grep_string( { cwd = vim.fn.expand("%:p:h") } )','<cmd>lua require("telescope.builtin").buffers()<CR>','<cmd>lua require("telescope.builtin").help_tags()<CR>']
+hook_source = '''
+lua <<eof
+require('telescope').setup{
+    defaults = {
+        mappings = {
+            n = {
+                ["<C-c>"] = require('telescope.actions').close,
+            },
+            i = {
+                ["<C-x>"] = require('telescope.actions').close,
+            }
+        }
+    }
+}
+eof
+'''
