@@ -12,4 +12,8 @@ ln -sf ~/dotfiles/alacritty ~/.config/alacritty
 ln -sf ~/dotfiles/almel ~/.config/almel
 ln -sf ~/dotfiles/almel.yaml ~/.config/almel.yaml
 ln -sf ~/dotfiles/.command ~/.command
-ln -sf ~/dotfiles/nvim ~/.config/nvim
+mkdir ~/.config/nvim
+ln -sf ~/dotfiles/nvim/dein.toml ~/.config/nvim/dein.toml
+ln -sf ~/dotfiles/nvim/dein_lazy.toml ~/.config/nvim/dein_lazy.toml
+ln -sf ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+mkdir ~/.config/nvim/undo
