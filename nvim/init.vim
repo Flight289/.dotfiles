@@ -97,22 +97,47 @@ hi SpecialKey ctermfg=256
 " keymaps
 "--------------------------
 cabbr w!! w !sudo tee % > /dev/null
-let g:mapleader = "\<Space>"
+let g:mapleader = "\<space>"
 nnoremap ; :
-nnoremap <silent><Leader>w :w<CR>
-"nnoremap <silent><Leader>wq :wq<CR>
+nnoremap <silent><leader>w :w<cr>
 nnoremap <silent><Leader>q :q!<CR>
+nnoremap <silent><Esc><Esc> :nohlsearch<CR>
+"{{{ clipboard key binds
+map <silent>y "+y
+noremap <silent>p "+p
+vnoremap <silent>d "+d
+vnoremap <silent>c "+c
+vnoremap <silent>y "+y
+nnoremap <silent>D "+D
+nnoremap <silent>C "+C
+nnoremap <silent>Y v$h"+y
+nnoremap <silent>dd "+dd
+nnoremap <silent>cc "+cc
+nnoremap <silent>yy "+yy
+nnoremap <silent>di "+di
+nnoremap <silent>ci "+ci
+nnoremap <silent>yi "+yi
+"}}}
+
+"{{{ hi-speed hjkl
 noremap <silent><S-k> 7<up>
 noremap <silent><S-j> 7<down>
 noremap <silent><S-h> 0
 noremap <silent><S-l> $
-nnoremap <silent><Esc><Esc> :nohlsearch<CR>
+"}}}
+
+"{{{ emacs key binds
 inoremap <silent><C-f> <right>
-inoremap <silent><C-d> <left>
+inoremap <silent><C-b> <left>
+inoremap <silent><C-a> <C-o>0
+inoremap <silent><C-e> <C-o>$
+inoremap <silent><C-k> <C-o>"+D
+inoremap <silent><C-d> <del>
+"}}}
+inoremap <silent><C-z> <C-d>
 nnoremap <silent><C-j> :bprev<CR>
 nnoremap <silent><C-k> :bnext<CR>
-nnoremap <silent><leader>n :NERDTreeFocus<CR>
-nnoremap <silent><C-t> :NERDTreeToggle<CR>
+nnoremap <silent><C-t> :Fern %:h -drawer -toggle -width=30<CR>
 nnoremap <leader>ff <cmd>lua require("telescope.builtin").find_files( { cwd = vim.fn.expand("%:p:h") } )<CR>
 nnoremap <leader>fg <cmd>lua require("telescope.builtin").live_grep( { cwd = vim.fn.expand("%:p:h") } )<CR>
 nnoremap <leader>fs <cmd>lua require("telescope.builtin").grep_string( { cwd = vim.fn.expand("%:p:h") } )<CR>

@@ -29,7 +29,6 @@
         #\ }
 #endif
 #'''
-
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = ['InsertEnter']
@@ -52,6 +51,7 @@ endfor
 
 [[plugins]]
 repo = 'junegunn/vim-peekaboo'
+on_event = 'CursorHold'
 
 [[plugins]]
 repo = 'mechatroner/rainbow_csv'
@@ -85,8 +85,33 @@ g:bracey_browser_command = 'xdg-open'
 '''
 
 [[plugins]]
-repo = 'preservim/nerdtree'
-on_cmd = [':NERDTreeFocus', ':NERDTreeToggle']
+repo = 'lambdalisue/fern.vim'
+on_cmd = [':Fern %:h -drawer -toggle -width=30']
+
+[[plugins]]
+repo ='lambdalisue/nerdfont.vim'
+on_event = 'CursorMoved'
+depends = ['fern.vim']
+
+[[plugins]]
+repo ='lambdalisue/fern-renderer-nerdfont.vim'
+on_event = 'CursorMoved'
+depends = ['fern.vim']
+hook_source = '''
+let g:fern#renderer = 'nerdfont'
+'''
+
+[[plugins]]
+repo ='lambdalisue/glyph-palette.vim'
+on_event = 'CursorMoved'
+depends = ['fern.vim']
+hook_source = '''
+augroup my-glyph-palette
+  autocmd! *
+  autocmd FileType fern call glyph_palette#apply()
+  autocmd FileType nerdtree,startify call glyph_palette#apply()
+augroup END
+'''
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'
@@ -112,44 +137,60 @@ call ddc#enable()
 
 [[plugins]]
 repo = 'Shougo/ddc-ui-native'
+on_event = ['InsertEnter']
+depends = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-source-around'
+on_event = ['InsertEnter']
+depends = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-matcher_head'
+on_event = ['InsertEnter']
+depends = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-sorter_rank'
+on_event = ['InsertEnter']
+depends = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-source-nextword'
+on_event = ['InsertEnter']
+depends = 'ddc.vim'
 
 [[plugins]]
 repo = 'shun/ddc-vim-lsp'
+on_event = ['InsertEnter']
+depends = 'ddc.vim'
 
 [[plugins]]
-repo = 'kat0h/bufpreview.vim'
+repo = 'tani/glance-vim'
 depends = 'denops.vim'
 on_ft = ['markdown']
 hook_source ='''
-nnoremap <silent><leader>m :PreviewMarkdown<CR>
+let g:glance#markdown_breaks = v:true
+let g:glance#markdown_linkify = v:true
+let g:glance#markdown_html = v:true
+let g:glance#markdown_plugins = ['https://esm.sh/markdown-it-mathjax3?bundle']
 '''
 
 [[plugins]]
 repo = 'gko/vim-coloresque'
-on_ft = ['css','html','less','sass','scss','stylus']
+on_event = ['CursorHold']
+on_ft = ['vim','css','html','less','sass','scss','stylus']
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
+on_event = ['CursorHold']
 hook_source ='''
-let g:lsp_diagnostics_enabled = 0
+"let g:lsp_diagnostics_enabled = 0
 '''
-
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
 depends = 'vim-lsp'
-on_event = 'CursorMoved'
+on_event = ['CursorHold']
 hook_source = '''
 nnoremap <silent><leader>ld :LspDefinition<CR>
 nnoremap <silent><leader>lh :LspHover<CR>
@@ -159,10 +200,10 @@ nnoremap <silent><leader>lr :LspRename<CR>
 '''
 
 [[plugins]]
-repo = 'folke/tokyonight.nvim'
+repo = 'rebelot/kanagawa.nvim'
 on_event = ['CursorHold']
 hook_source = '''
-colorscheme tokyonight-storm
+colorscheme kanagawa
 hi SpecialKey ctermfg=256
 '''
 

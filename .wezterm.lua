@@ -2,13 +2,14 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local keybinds = require("keybinds")
 
-
+--==
+--===
 return
 {
-    font_size = 12.0,
+    font_size = 11.0,
     dpi = 96.0,
     max_fps = 100,
-    font = wezterm.font('FiraCode Nerd Font Mono'),
+    font = wezterm.font('JetBrainsMono Nerd Font Mono'),
     font_antialias = "Greyscale",
     font_hinting = "Full",
     use_ime = true,

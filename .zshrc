@@ -43,6 +43,9 @@ bindkey '^R' history-incremental-pattern-search-backward
 
 export PATH="/opt:$PATH"
 
+export PIP_INSTALL="/home/flight/.local/"
+export PATH="$PIP_INSTALL/bin:$PATH"
+
 export DENO_INSTALL="/home/flight/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 

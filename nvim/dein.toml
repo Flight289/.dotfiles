@@ -227,6 +227,6 @@ repo = 'albertomontesg/lightline-asyncrun'
 depend = ['asyncrun.vim','lightline.vim']
 
 
-[[plugins]]  
+[[plugins]]
 repo = 'nvim-lua/plenary.nvim'
 
