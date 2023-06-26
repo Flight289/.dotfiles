@@ -57,6 +57,8 @@ export PATH="$COMMANDS:$PATH"
 
 eval "$(almel init zsh)"
 
+eval "$(pyenv init -)"
+
 alias vi=vim
 
 alias vim=nvim
@@ -76,3 +78,14 @@ alias lsa='exa -a -T -L 3 -l --icons'
 alias getmyip='curl inet-ip.info'
 
 alias take='(){ mkdir $1 && cd $1 }'
+
+ssid=`iwgetid -r`
+proxy="202.211.8.4:8080"
+if [ $ssid ]; then
+    if [ $ssid = "INCT-STU2" ]; then
+        export http_proxy="http://$proxy"
+        export htps_proxy=$http_proxy
+        export ftp_proxy=$http_proxy
+        export no_proxy="127.0.0.1, localhost"
+    fi
+fi
