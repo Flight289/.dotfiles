@@ -57,7 +57,7 @@ vim.opt.tabstop = 4
 vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.cursorline = true
-vim.opt.shellslash = true
+--vim.opt.shellslash = true
 vim.opt.ambiwidth = "single"
 vim.opt.showtabline = 2
 vim.opt.matchtime = 1
@@ -124,7 +124,7 @@ vim.keymap.set("n", "<leader>h", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 --vim.keymap.set("n", "", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
 --vim.keymap.set("n", "", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
 --vim.keymap.set("n", "", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
---vim.keymap.set("n", "", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
+-- vim.keymap.set("n", "", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
 vim.keymap.set("n", "<leader>m", "<cmd>lua vim.lsp.buf.rename()<CR>")
 vim.keymap.set("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 --vim.keymap.set("n", "", "<cmd>lua vim.lsp.buf.references()<CR>")
@@ -173,6 +173,7 @@ require("lazy").setup({
         "numToStr/Comment.nvim",
         lazy = true,
         event = 'CursorMoved',
+
         config = function ()
             require("Comment").setup({
                 toggler = {
@@ -188,6 +189,66 @@ require("lazy").setup({
         end
     },
     {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opt = {
+            position = "bottom", -- position of the list can be: bottom, top, left, right
+            height = 10, -- height of the trouble list when position is top or bottom
+            width = 50, -- width of the list when position is left or right
+            icons = true, -- use devicons for filenames
+            mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+            severity = nil, -- nil (ALL) or vim.diagnostic.severity.ERROR | WARN | INFO | HINT
+            fold_open = "", -- icon used for open folds
+            fold_closed = "", -- icon used for closed folds
+            group = true, -- group results by file
+            padding = true, -- add an extra new line on top of the list
+            cycle_results = true, -- cycle item list when reaching beginning or end of list
+            action_keys = { -- key mappings for actions in the trouble list
+                -- map to {} to remove a mapping, for example:
+                -- close = {},
+                close = "q", -- close the list
+                cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
+                refresh = "r", -- manually refresh
+                jump = { "<cr>", "<tab>", "<2-leftmouse>" }, -- jump to the diagnostic or open / close folds
+                open_split = { "<c-x>" }, -- open buffer in new split
+                open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
+                open_tab = { "<c-t>" }, -- open buffer in new tab
+                jump_close = {"o"}, -- jump to the diagnostic and close the list
+                toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
+                switch_severity = "s", -- switch "diagnostics" severity filter level to HINT / INFO / WARN / ERROR
+                toggle_preview = "P", -- toggle auto_preview
+                hover = "K", -- opens a small popup with the full multiline message
+                preview = "p", -- preview the diagnostic location
+                open_code_href = "c", -- if present, open a URI with more information about the diagnostic error
+                close_folds = {"zM", "zm"}, -- close all folds
+                open_folds = {"zR", "zr"}, -- open all folds
+                toggle_fold = {"zA", "za"}, -- toggle fold of current file
+                previous = "k", -- previous item
+                next = "j", -- next item
+                help = "?" -- help menu
+            },
+            multiline = true, -- render multi-line messages
+            indent_lines = true, -- add an indent guide below the fold icons
+            win_config = { border = "single" }, -- window configuration for floating windows. See |nvim_open_win()|.
+            auto_open = false, -- automatically open the list when you have diagnostics
+            auto_close = false, -- automatically close the list when you have no diagnostics
+            auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+            auto_fold = false, -- automatically fold a file trouble list at creation
+            auto_jump = {"lsp_definitions"}, -- for the given modes, automatically jump if there is only a single result
+            include_declaration = { "lsp_references", "lsp_implementations", "lsp_definitions"  }, -- for the given modes, include the declaration of the current symbol in the results
+            signs = {
+              -- icons / text used for a diagnostic
+              error = "",
+              warning = "",
+              hint = "",
+              information = "",
+              other = "",
+            },
+            use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
+        },
+        vim.keymap.set({ "n", "v" }, "<leader>x", "<cmd>TroubleToggle<cr>")
+    },
+    {
         'nvim-telescope/telescope.nvim',
         dependencies = 'plenary.nvim',
         lazy = true,
@@ -195,6 +256,36 @@ require("lazy").setup({
         event = "CursorHold",
         config = function ()
             require("telescope").setup {}
+        end
+    },
+    {
+        'goolord/alpha-nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function ()
+            require'alpha'.setup(require'alpha.themes.startify'.config)
+    end
+    },
+    {
+        "mfussenegger/nvim-dap",
+        lazy = true,
+        config = function ()
+            local dap = require("dap")
+            dap.adapters.lldb = {
+                type = "executable",
+                command = "/usr/bin/lldb-vscode",
+                name = "lldb"
+            }
+            dap.configurations.c = dap.configurations.cpp
+            require('dap.ext.vscode').load_launchjs( nil, { cppdbg = { "c", "cpp" } } )
+            vim.keymap.set('n', '<leader>D', function() require('dap').continue() end)
+        end
+    },
+    {
+        "stevearc/overseer.nvim",
+        dependencies = 'mfussenegger/nvim-dap',
+        config = function ()
+            require("overseer").setup()
+            require("dap.ext.vscode").json_decode = require("overseer.json").decode
         end
     },
     {
@@ -221,16 +312,21 @@ require("lazy").setup({
     {
         "tversteeg/registers.nvim",
         lazy = true,
-        event = "CursorHold",
+        key = {
+            {'"', mode = "n",},
+        },
         config = function ()
             require("registers").setup{}
         end
     },
-    {
-        "ray-x/lsp_signature.nvim",
-        lazy = true,
-        event = "CursorMoved"
-    },
+    -- {
+    --     "ray-x/lsp_signature.nvim",
+    --     lazy = true,
+    --     event = "CursorMoved",
+    --     config = function ()
+    --         require("lsp_signature").setup()
+    --     end
+    -- },
     {
         "rcarriga/nvim-notify",
         lazy = true
@@ -255,6 +351,11 @@ require("lazy").setup({
         end
     },
     {
+        "kevinhwang91/nvim-ufo",
+        lazy = true,
+        event = "BufEnter",
+    },
+    {
         "onsails/lspkind.nvim",
         lazy = true,
         event = "InsertEnter"
@@ -271,6 +372,38 @@ require("lazy").setup({
         config = function()
         end
     },
+    --[[ {
+        "nvimdev/lspsaga.nvim",
+        lazy = true,
+        event = "CursorMoved",
+        config = function ()
+            require("lspsaga").setup({
+              border_style = "single",
+              symbol_in_winbar = {
+                enable = false,
+              },
+              code_action_lightbulb = {
+                enable = true,
+              },
+              show_outline = {
+                win_width = 50,
+                auto_preview = false,
+              },
+            })
+            vim.keymap.set("n", "<leader>k", "<cmd>Lspsaga hover_doc<CR>")
+            -- vim.keymap.set("n", "<leader>", "<cmd>Lspsaga lsp_finder<CR>")
+            -- vim.keymap.set("n", "<leader>", "<cmd>Lspsaga peek_definition<CR>")
+            -- vim.keymap.set("n", "<leader>", "<cmd>Lspsaga code_action<CR>")
+            vim.keymap.set("n", "<leader>", "<cmd>Lspsaga rename<CR>")
+            -- vim.keymap.set("n", "<leader>", "<cmd>Lspsaga SLoutlineToggle<CR>")
+            -- vim.keymap.set("n", "<leader>", "<cmd>Lspsaga show_line_diagnostics<CR>")
+            -- vim.keymap.set("n", "<leader>", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+            -- vim.keymap.set("n", "<leader>", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+            -- vim.keymap.set("n", "<leader>", "<cmd>Lspsaga open_floaterm<CR>")
+            -- vim.keymap.set("n", "<leader>", "<cmd>Lspsaga open_floaterm lazygit<CR>")
+            -- vim.keymap.set("n", "<leader>", "<cmd>Lspsaga close_floaterm<CR>")
+        end
+    }, ]]
     {
         "iamcco/markdown-preview.nvim",
         lazy = true,
@@ -281,7 +414,6 @@ require("lazy").setup({
         lazy = true,
         event = "CursorHold",
         config = function ()
-            require("scrollbar").setup({})
         end
     },
     {
@@ -299,6 +431,66 @@ require("lazy").setup({
     {
         "hrsh7th/nvim-cmp",
         lazy = true,
+        event = "InsertEnter",
+        config = function ()
+            local lspkind = require'lspkind'
+            local cmp = require'cmp'
+            cmp.setup({
+                formatting = {
+                    format = lspkind.cmp_format({
+                        mode = 'symbol',
+                        maxwidth = 50,
+                        ellipsis_char = '...',
+                    })
+                },
+                snippet = {
+                    -- REQUIRED - you must specify a snippet engine
+                    expand = function(args)
+                        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+                        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+                        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+                    end,
+                },
+                window = {
+                    -- completion = cmp.config.window.bordered(),
+                    -- documentation = cmp.config.window.bordered(),
+                },
+                mapping = cmp.mapping.preset.insert({
+                    -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+                    -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                    -- ['<C-Space>'] = cmp.mapping.complete(),
+                    -- ['<C-e>'] = cmp.mapping.abort(),
+                    ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                }),
+                sources = cmp.config.sources({
+                    { name = 'nvim_lsp' },
+                    { name = "nvim_lsp_signature_help" },
+                    -- { name = 'vsnip' }, -- For vsnip users.
+                    { name = 'luasnip' }, -- For luasnip users.
+                    -- { name = 'ultisnips' }, -- For ultisnips users.
+                    -- { name = 'snippy' }, -- For snippy users.
+                    { name = 'buffer' },
+                })
+            })
+
+            cmp.setup.cmdline({ '/', '?' },{
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                    { name = 'buffer' }
+                }
+            })
+
+            cmp.setup.cmdline(':', {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = cmp.config.sources({
+                    { name = 'path' }
+                },
+                {
+                    { name = 'cmdline' }
+                })
+            })
+        end
     },
     {
         "hrsh7th/cmp-nvim-lsp",
@@ -314,13 +506,11 @@ require("lazy").setup({
         "hrsh7th/cmp-cmdline",
         lazy = true,
         dependencies = { "nvim-cmp" },
-        event = "ModeChanged"
     },
     {
         "saadparwaiz1/cmp_luasnip",
         lazy = true,
         dependencies = { "nvim-cmp" },
-        event = "InsertEnter"
     },
     {
         "j-hui/fidget.nvim",
@@ -328,13 +518,25 @@ require("lazy").setup({
         event = 'CursorHold',
         config = function()
             require"fidget".setup{}
-        end
+        end,
     },
     {
         "neovim/nvim-lspconfig",
         lazy = true,
         event = 'CursorHold',
         config = function()
+        end,
+    },
+    {
+        "ErichDonGubler/lsp_lines.nvim",
+        lazy = true,
+        event = 'CursorHold',
+        config = function ()
+            require("lsp_lines").setup()
+            vim.diagnostic.config({
+                virtual_text = false,
+            })
+            vim.keymap.set("n","<leader>l",require("lsp_lines").toggle,{ desc = "Toggle lsp_lines" })
         end,
     },
     {
@@ -364,7 +566,7 @@ require("lazy").setup({
         'nvim-lualine/lualine.nvim',
         lazy = true,
         event = 'CursorHold',
-        dependencies = { "kyazdani42/nvim-web-devicons" },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require('lualine').setup{
                 options={
@@ -445,14 +647,14 @@ require("lazy").setup({
         end,
     },
     {
-        "kyazdani42/nvim-web-devicons",
+        "nvim-tree/nvim-web-devicons",
         lazy = true,
         event = 'CursorHold'
     },
     {
         "nvim-tree/nvim-tree.lua",
         lazy = true,
-        dependencies = {"kyazdani42/nvim-web-devicons"},
+        dependencies = {"nvim-tree/nvim-web-devicons"},
         cmd = { "NvimTreeToggle" },
         config = function()
             require("nvim-tree").setup{}
@@ -472,11 +674,12 @@ require("mason-lspconfig").setup_handlers {
         require("lspconfig")[server_name].setup {
             on_attach == on_attach
         }
-        require "lsp_signature".setup({
-            handler_opts = {
-                border = "rounded"
-            }
-        })
+        -- require "lsp_signature".setup({
+        --     bind = true,
+        --     handler_opts = {
+        --         border = "rounded"
+        --     }
+        -- })
     end,
 }
 
@@ -485,43 +688,3 @@ capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 vim.opt.completeopt = "menu,menuone,noselect"
 
-local lspkind = require('lspkind')
-local cmp = require"cmp"
-cmp.setup({
-    formatting = {
-        format = lspkind.cmp_format({
-            mode = 'symbol',
-            maxwidth = 50,
-            ellipsis_char = '...',
-        })
-    },
-    snippet = {
-        expand = function(args)
-            require'luasnip'.lsp_expand(args.body)
-        end,
-    },
-    mapping = cmp.mapping.preset.insert({
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.close(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-    }),
-    sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "nvim_lsp_signature_help" },
-        { name = "luasnip" },
-        { name = "cmdline" },
-        { name = "buffer" },
-    })
-})
-
--- local null_ls = require "null-ls"
--- null_ls.setup {
---     sources = {
---         null_ls.builtins.code_actions.gitsigns,
---         null_ls.builtins.formatting.prettier.with {
---             prefer_local = "node_modules/bin",
---         },
---     },
--- }
