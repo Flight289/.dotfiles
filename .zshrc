@@ -1,3 +1,13 @@
+# zplug {{{
+source ~/.zplug/init.zsh
+zplug 'zplug/zplug', hook-build:'zplub --self-manage'
+
+zplug "mafredri/zsh-async"
+
+zplug "zsh-users/zsh-syntax-highlighting"
+
+zplug "zsh-users/zsh-completions"
+# }}}
 zmodload zsh/datetime
 
 autoload -Uz colors
@@ -55,9 +65,9 @@ export PATH="$CARGO_INSTALL/bin:$PATH"
 export COMMANDS="/home/flight/.command/"
 export PATH="$COMMANDS:$PATH"
 
-eval "$(almel init zsh)"
+eval "$(almel init zsh --async)"
 
-eval "$(pyenv init -)"
+# eval "$(pyenv init --path)"
 
 alias vi=vim
 
