@@ -4,6 +4,8 @@ zplug 'zplug/zplug', hook-build:'zplub --self-manage'
 
 zplug "mafredri/zsh-async"
 
+zplug "chrissicool/zsh-256color"
+
 zplug "zsh-users/zsh-syntax-highlighting"
 
 zplug "zsh-users/zsh-completions"
