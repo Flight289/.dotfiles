@@ -67,9 +67,16 @@ export PATH="$CARGO_INSTALL/bin:$PATH"
 export COMMANDS="/home/flight/.command/"
 export PATH="$COMMANDS:$PATH"
 
+export PKG_CONFIG_PATH=~/libs/opencv-2.4.13.4/release/installed/lib/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=~/libs/opencv-2.4.13.4/release/installed/lib:$LD_LIBRARY_PATH
+
 eval "$(almel init zsh --async)"
 
 # eval "$(pyenv init --path)"
+
+alias cp='cp -r'
+
+alias rm='rm -rf'
 
 alias vi=vim
 

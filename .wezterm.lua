@@ -18,6 +18,7 @@ return
     tab_bar_at_bottom = true,
     disable_default_key_bindings = true,
     enable_csi_u_key_encoding = true,
+    enable_wayland = true,
     color_scheme = "Wombat",
     use_fancy_tab_bar = false,
     tab_max_width = 30,

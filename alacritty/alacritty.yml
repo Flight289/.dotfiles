@@ -5,7 +5,7 @@ mouse_bindings:
 
 window:
   decorations: none
-  opacity: 0.35
+  opacity: 0.80
 
 font:
   normal:
@@ -24,7 +24,7 @@ font:
     familu: FiraCode Nerd Font Mono
     style: Bold Italic
 
-  size: 12
+  size: 11
 
 colors:
   primary:
