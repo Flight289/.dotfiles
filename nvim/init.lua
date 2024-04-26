@@ -335,21 +335,21 @@ require("lazy").setup({
         "MunifTanjim/nui.nvim",
         lazy = true
     },
-    {
-        "folke/noice.nvim",
-        lazy = true,
-        dependencies = {"rcarriga/nvim-notify", "MunifTanjim/nui.nvim"},
-        event = "CursorHold",
-        config = function ()
-            require("noice").setup({
-                lsp = {
-                    signature = {
-                        enabled = false,
-                    }
-                }
-            })
-        end
-    },
+    -- {
+    --     "folke/noice.nvim",
+    --     lazy = true,
+    --     dependencies = {"rcarriga/nvim-notify", "MunifTanjim/nui.nvim"},
+    --     event = "CursorHold",
+    --     config = function ()
+    --         require("noice").setup({
+    --             lsp = {
+    --                 signature = {
+    --                     enabled = false,
+    --                 }
+    --             }
+    --         })
+    --     end
+    -- },
     {
         "kevinhwang91/nvim-ufo",
         lazy = true,
@@ -621,6 +621,15 @@ require("lazy").setup({
                 },
                 extensions = {}
             }
+        end,
+    },
+    {
+        'xuhdev/vim-latex-live-preview',
+        lazy = true,
+        ft = 'plaintex',
+        config = function()
+            let g:livepreview_previewer = 'evince'
+            let g:livepreview_engine = 'uplatex'
         end,
     },
     {
