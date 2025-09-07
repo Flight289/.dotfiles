@@ -82,17 +82,17 @@ alias vi=vim
 
 alias vim=nvim
 
-alias l='exa --icons'
+alias l='eza --icons'
 
-alias ls='exa -a --icons'
+alias ls='eza -a --icons'
 
-alias lt='exa -T --icons'
+alias lt='eza -T --icons'
 
-alias ll='exa -l --icons'
+alias ll='eza -l --icons'
 
-alias la='exa -a -l --icons'
+alias la='eza -a -l --icons'
 
-alias lsa='exa -a -T -L 3 -l --icons'
+alias lsa='eza -a -T -L 3 -l --icons'
 
 alias getmyip='curl inet-ip.info'
 

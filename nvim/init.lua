@@ -335,21 +335,21 @@ require("lazy").setup({
         "MunifTanjim/nui.nvim",
         lazy = true
     },
-    -- {
-    --     "folke/noice.nvim",
-    --     lazy = true,
-    --     dependencies = {"rcarriga/nvim-notify", "MunifTanjim/nui.nvim"},
-    --     event = "CursorHold",
-    --     config = function ()
-    --         require("noice").setup({
-    --             lsp = {
-    --                 signature = {
-    --                     enabled = false,
-    --                 }
-    --             }
-    --         })
-    --     end
-    -- },
+    {
+        "folke/noice.nvim",
+        lazy = true,
+        dependencies = {"rcarriga/nvim-notify", "MunifTanjim/nui.nvim"},
+        event = "CursorHold",
+        config = function ()
+            require("noice").setup({
+                lsp = {
+                    signature = {
+                        enabled = false,
+                    }
+                }
+            })
+        end
+    },
     {
         "kevinhwang91/nvim-ufo",
         lazy = true,
@@ -556,10 +556,14 @@ require("lazy").setup({
     },
     {
         "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {},
         lazy = true,
         event = 'CursorHold',
         config = function()
-            require("indent_blankline").setup{}
+            require("ibl").setup{
+                scope = { enabled = true },
+            }
         end,
     },
     {
@@ -628,8 +632,8 @@ require("lazy").setup({
         lazy = true,
         ft = 'plaintex',
         config = function()
-            let g:livepreview_previewer = 'evince'
-            let g:livepreview_engine = 'uplatex'
+--            let g:livepreview_previewer = 'evince'
+--            let g:livepreview_engine = 'uplatex'
         end,
     },
     {
@@ -678,19 +682,19 @@ end
 
 require("mason").setup()
 require("mason-lspconfig").setup()
-require("mason-lspconfig").setup_handlers {
-    function (server_name)
-        require("lspconfig")[server_name].setup {
-            on_attach == on_attach
-        }
+-- require("mason-lspconfig").setup_handlers {
+    -- function (server_name)
+        -- require("lspconfig")[server_name].setup {
+            -- on_attach == on_attach
+        -- }
         -- require "lsp_signature".setup({
         --     bind = true,
         --     handler_opts = {
         --         border = "rounded"
         --     }
         -- })
-    end,
-}
+    -- end,
+-- }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities()

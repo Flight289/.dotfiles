@@ -1,1 +1,1 @@
-/home/flight/dotfiles/.command
+/Users/flight/dotfiles/.command
